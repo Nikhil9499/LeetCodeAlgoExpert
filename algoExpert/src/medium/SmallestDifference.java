@@ -1,4 +1,4 @@
-package easy;
+package medium;
 
 // Find the pair with the smallest difference in two unsorted arrays
 
