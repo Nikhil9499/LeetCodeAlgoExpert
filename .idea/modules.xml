@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/LeetCodeAlgoExpert.iml" filepath="$PROJECT_DIR$/.idea/LeetCodeAlgoExpert.iml" />
       <module fileurl="file://$PROJECT_DIR$/algoExpert/algoExpert.iml" filepath="$PROJECT_DIR$/algoExpert/algoExpert.iml" />
+      <module fileurl="file://$PROJECT_DIR$/amazon/amazon.iml" filepath="$PROJECT_DIR$/amazon/amazon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/heaps/heaps.iml" filepath="$PROJECT_DIR$/heaps/heaps.iml" />
       <module fileurl="file://$PROJECT_DIR$/leetcode/leetcode.iml" filepath="$PROJECT_DIR$/leetcode/leetcode.iml" />
       <module fileurl="file://$PROJECT_DIR$/random/random.iml" filepath="$PROJECT_DIR$/random/random.iml" />
     </modules>

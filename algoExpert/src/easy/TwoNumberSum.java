@@ -19,7 +19,7 @@ public class TwoNumberSum {
 		printArray(twoNumberSumTwoPointers(new int[]{3, 5, -4, 8, 11, 1, -1, 6}, -5));
 	}
 
-	// O(nlogn) || O(1)
+	// O(n) || O(1)
 	public static int[] twoNumberSum(int[] array, int targetSum) {
 		int[] ans = new int[2];
 		Set<Integer> map = new HashSet<>();
