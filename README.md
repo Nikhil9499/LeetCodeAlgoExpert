@@ -1,2 +1,2 @@
-# LeetCodeAlgoExpert
-LeetCode &amp; AlgoExpert Problems Solutions in java
+# LeetCode, AlgoExpert and FAANG DS Algo Questions Solutions in JAVA
+
