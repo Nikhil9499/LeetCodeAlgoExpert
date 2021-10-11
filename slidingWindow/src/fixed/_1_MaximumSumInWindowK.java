@@ -1,7 +1,5 @@
 package fixed;
 
-import java.util.List;
-
 public class _1_MaximumSumInWindowK {
 	public static void main(String[] args) {
 		int arr[] = {100, 200, 300, 100};

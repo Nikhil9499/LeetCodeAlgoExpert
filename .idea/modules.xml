@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/LeetCodeAlgoExpert.iml" filepath="$PROJECT_DIR$/.idea/LeetCodeAlgoExpert.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/LLD.iml" filepath="$PROJECT_DIR$/LLD/LLD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MyCodingJourney.iml" filepath="$PROJECT_DIR$/.idea/MyCodingJourney.iml" />
       <module fileurl="file://$PROJECT_DIR$/algoExpert/algoExpert.iml" filepath="$PROJECT_DIR$/algoExpert/algoExpert.iml" />
       <module fileurl="file://$PROJECT_DIR$/amazon/amazon.iml" filepath="$PROJECT_DIR$/amazon/amazon.iml" />
       <module fileurl="file://$PROJECT_DIR$/binarySearch/binarySearch.iml" filepath="$PROJECT_DIR$/binarySearch/binarySearch.iml" />
@@ -12,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/random/random.iml" filepath="$PROJECT_DIR$/random/random.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidingWindow/slidingWindow.iml" filepath="$PROJECT_DIR$/slidingWindow/slidingWindow.iml" />
       <module fileurl="file://$PROJECT_DIR$/stacks/stacks.iml" filepath="$PROJECT_DIR$/stacks/stacks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trees/trees.iml" filepath="$PROJECT_DIR$/trees/trees.iml" />
     </modules>
   </component>
 </project>

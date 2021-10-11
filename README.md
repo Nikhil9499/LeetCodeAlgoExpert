@@ -1,2 +1,3 @@
-# LeetCode, AlgoExpert and FAANG DS Algo Questions Solutions in JAVA
+# My Coding Journey in Java
+## DSA Questions Solutions
 
