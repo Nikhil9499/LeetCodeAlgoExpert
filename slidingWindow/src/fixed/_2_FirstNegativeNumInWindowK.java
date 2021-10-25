@@ -12,26 +12,26 @@ public class _2_FirstNegativeNumInWindowK {
 		System.out.println(firstNegativeInWindowK(arr, k));
 	}
 
-	public static List<Integer> firstNegativeInWindowK(int[]arr, int k) {
+	public static List<Integer> firstNegativeInWindowK(int[] arr, int k) {
 		List<Integer> ans = new ArrayList<>();
 
-		if (arr == null || arr.length == 0 || k < 0){
+		if (arr == null || arr.length == 0 || k < 0) {
 			return ans;
 		}
 
 		Queue<Integer> queue = new LinkedList<>();
 
-		int i=0, j=0, n=arr.length;
+		int i = 0, j = 0, n = arr.length;
 
-		while(j < n) {
+		while (j < n) {
 			//System.out.println(queue + " j: " + j + " i: " + i);
 			if (arr[j] < 0) {
 				queue.offer(arr[j]);
 			}
 
-			if (j-i+1 < k) {
+			if (j - i + 1 < k) {
 				j++;
-			} else if (j-i+1 == k) {
+			} else if (j - i + 1 == k) {
 				if (queue.isEmpty()) {
 					ans.add(0);
 				} else {

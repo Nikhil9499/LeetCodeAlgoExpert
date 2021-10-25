@@ -3,7 +3,10 @@ package binaryTree;
 public class Tree {
 	Node root;
 
-	public Tree() { root = null; }
+	public Tree() {
+		root = null;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Trees with different format for testing.");
 	}

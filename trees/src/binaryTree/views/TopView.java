@@ -23,7 +23,7 @@ public class TopView {
 		topViewUtil(root, 0, 0, map);
 
 		List<Integer> ans = new ArrayList<>();
-		for (Pair p: map.values()) {
+		for (Pair p : map.values()) {
 			ans.add(p.first);
 		}
 		return ans;
@@ -43,8 +43,8 @@ public class TopView {
 			}
 		}
 
-		topViewUtil(root.left, distance-1, level+1, map);
-		topViewUtil(root.right, distance+1, level+1, map);
+		topViewUtil(root.left, distance - 1, level + 1, map);
+		topViewUtil(root.right, distance + 1, level + 1, map);
 	}
 
 	public static List<Integer> topViewIterative(Node root) {
@@ -57,25 +57,25 @@ public class TopView {
 
 		Map<Integer, NodePair> map = new TreeMap<>();
 
-		while(!queue.isEmpty()) {
+		while (!queue.isEmpty()) {
 			NodePair nodePair = queue.poll();
 
-			if(!map.containsKey(nodePair.second)) {
+			if (!map.containsKey(nodePair.second)) {
 				map.put(nodePair.second, nodePair);
 			}
 
 			if (nodePair.node.left != null) {
-				queue.add(new NodePair(nodePair.node.left, nodePair.second-1));
+				queue.add(new NodePair(nodePair.node.left, nodePair.second - 1));
 			}
 
 			if (nodePair.node.right != null) {
-				queue.add(new NodePair(nodePair.node.right, nodePair.second+1));
+				queue.add(new NodePair(nodePair.node.right, nodePair.second + 1));
 			}
 
 		}
 
 		List<Integer> ans = new ArrayList<>();
-		for (Map.Entry<Integer, NodePair> entry: map.entrySet()) {
+		for (Map.Entry<Integer, NodePair> entry : map.entrySet()) {
 			ans.add(entry.getValue().node.data);
 		}
 		return ans;

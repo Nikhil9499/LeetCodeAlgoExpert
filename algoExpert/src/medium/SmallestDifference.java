@@ -16,13 +16,14 @@ public class SmallestDifference {
 		pair = smallestDifferenceSorting(a1, a2);
 		System.out.println(pair[0] + " " + pair[1]);
 	}
+
 	// O(n^2)
 	public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
 		int[] ans = new int[2];
 		int min = Integer.MAX_VALUE;
 
-		for (int i=0; i<arrayOne.length; i++) {
-			for (int j=0; j<arrayTwo.length; j++) {
+		for (int i = 0; i < arrayOne.length; i++) {
+			for (int j = 0; j < arrayTwo.length; j++) {
 				int diff = Math.abs(arrayOne[i] - arrayTwo[j]);
 				if (min > diff) {
 					min = diff;
@@ -41,7 +42,7 @@ public class SmallestDifference {
 		Arrays.sort(arrayOne);
 		Arrays.sort(arrayTwo);
 
-		int i=0, j=0;
+		int i = 0, j = 0;
 		int current = Integer.MAX_VALUE, min = Integer.MAX_VALUE;
 		int[] ans = new int[2];
 
@@ -54,12 +55,12 @@ public class SmallestDifference {
 				current = second - first;
 				i++;
 			} else {
-				return new int[]{first, second};
+				return new int[] {first, second};
 			}
 
 			if (current < min) {
 				min = current;
-				ans = new int[]{first, second};
+				ans = new int[] {first, second};
 			}
 		}
 

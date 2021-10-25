@@ -1,7 +1,7 @@
 import java.util.StringJoiner;
 
 public class Pair {
-	int a,b;
+	int a, b;
 
 	public Pair(int a, int b) {
 		this.a = a;

@@ -1,15 +1,10 @@
 public class _7_MaxAreaBinaryMatrix {
 	public static void main(String[] args) {
-		int arr[][] = {
-			{ 0, 1, 1, 0 },
-			{ 1, 1, 1, 1 },
-			{ 1, 1, 1, 1 },
-			{ 1, 1, 0, 0 },
-		};
+		int arr[][] = {{0, 1, 1, 0}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 0, 0},};
 		System.out.println(maxAreaBinaryMatrix(arr)); //ans: 8
 	}
 
-	public static int maxAreaBinaryMatrix(int[][]mat) {
+	public static int maxAreaBinaryMatrix(int[][] mat) {
 		int ans = Integer.MIN_VALUE;
 		int[] temp = new int[mat[0].length];
 

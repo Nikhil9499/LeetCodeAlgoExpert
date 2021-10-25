@@ -5,23 +5,23 @@ import java.util.Stack;
 
 public class _2_NextSmallerToRight {
 	public static void main(String[] args) {
-		int[]arr = {4,3,5,4,6,7,2,9};
+		int[] arr = {4, 3, 5, 4, 6, 7, 2, 9};
 		System.out.println(nextSmallerToRight(arr));
 	}
 
-	public static List<Integer> nextSmallerToRight(int[]arr) {
+	public static List<Integer> nextSmallerToRight(int[] arr) {
 		List<Integer> ans = new ArrayList<>();
 
-		if (arr == null || arr.length ==0) {
+		if (arr == null || arr.length == 0) {
 			return ans;
 		}
 
 		Stack<Integer> stack = new Stack<>();
 
-		for (int i=arr.length-1; i>=0; i--) {
+		for (int i = arr.length - 1; i >= 0; i--) {
 			int current = arr[i];
 
-			while(!stack.isEmpty() && stack.peek() > current) {
+			while (!stack.isEmpty() && stack.peek() > current) {
 				stack.pop();
 			}
 

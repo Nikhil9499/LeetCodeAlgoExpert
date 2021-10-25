@@ -13,18 +13,18 @@ public class _8_SearchingInNearlySortedArray {
 		System.out.println(searchInNearlySortedArray(arr, 0));
 	}
 
-	public static int searchInNearlySortedArray(int[]arr, int target) {
-		int low = 0, high = arr.length-1;
+	public static int searchInNearlySortedArray(int[] arr, int target) {
+		int low = 0, high = arr.length - 1;
 
 		while (low <= high) {
-			int mid = low + (high-low)/2;
+			int mid = low + (high - low) / 2;
 
-			if(arr[mid] == target) {
+			if (arr[mid] == target) {
 				return mid;
-			} else if (mid > 0 && arr[mid-1] == target) {
-				return mid-1;
-			} else if (mid < arr.length-1 && arr[mid+1] == target) {
-				return mid+1;
+			} else if (mid > 0 && arr[mid - 1] == target) {
+				return mid - 1;
+			} else if (mid < arr.length - 1 && arr[mid + 1] == target) {
+				return mid + 1;
 			} else if (arr[mid] < target) {
 				low = mid + 2;
 			} else {

@@ -23,7 +23,7 @@ public class BottomView {
 		bottomViewUtil(root, 0, 0, map);
 
 		List<Integer> ans = new ArrayList<>();
-		for (Pair p: map.values()) {
+		for (Pair p : map.values()) {
 			ans.add(p.first);
 		}
 		return ans;
@@ -43,8 +43,8 @@ public class BottomView {
 			}
 		}
 
-		bottomViewUtil(root.left, distance-1, level+1, map);
-		bottomViewUtil(root.right, distance+1, level+1, map);
+		bottomViewUtil(root.left, distance - 1, level + 1, map);
+		bottomViewUtil(root.right, distance + 1, level + 1, map);
 	}
 
 	public static List<Integer> bottomViewIterative(Node root) {
@@ -57,22 +57,22 @@ public class BottomView {
 
 		Map<Integer, NodePair> map = new TreeMap<>();
 
-		while(!queue.isEmpty()) {
+		while (!queue.isEmpty()) {
 			NodePair nodePair = queue.poll();
 			map.put(nodePair.second, nodePair);
 
 			if (nodePair.node.left != null) {
-				queue.add(new NodePair(nodePair.node.left, nodePair.second-1));
+				queue.add(new NodePair(nodePair.node.left, nodePair.second - 1));
 			}
 
 			if (nodePair.node.right != null) {
-				queue.add(new NodePair(nodePair.node.right, nodePair.second+1));
+				queue.add(new NodePair(nodePair.node.right, nodePair.second + 1));
 			}
 
 		}
 
 		List<Integer> ans = new ArrayList<>();
-		for (Map.Entry<Integer, NodePair> entry: map.entrySet()) {
+		for (Map.Entry<Integer, NodePair> entry : map.entrySet()) {
 			ans.add(entry.getValue().node.data);
 		}
 		return ans;

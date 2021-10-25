@@ -12,24 +12,24 @@ then the span values for corresponding 7 days are {1, 1, 1, 2, 1, 4, 6}
 */
 public class _5_StockSpan {
 	public static void main(String[] args) {
-		int[]arr = {4,3,5,4,6,7,2,9};
+		int[] arr = {4, 3, 5, 4, 6, 7, 2, 9};
 		System.out.println(stockSpan(arr));
 		int[] arr1 = {100, 80, 60, 70, 60, 75, 85};
 		System.out.println(stockSpan(arr1));
-		int[]arr2 = { 28,14,28,35,46,53,66,80,87,88};
+		int[] arr2 = {28, 14, 28, 35, 46, 53, 66, 80, 87, 88};
 		System.out.println(stockSpan(arr2));
 	}
 
-	public static List<Integer> stockSpan(int[]arr) {
+	public static List<Integer> stockSpan(int[] arr) {
 		List<Integer> ans = new ArrayList<>();
 
-		if (arr == null || arr.length == 0){
+		if (arr == null || arr.length == 0) {
 			return ans;
 		}
 
 		Stack<Pair> stack = new Stack<>();
 
-		for (int i=0; i<arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			int ele = arr[i];
 
 			while (!stack.isEmpty() && stack.peek().getA() < ele) {
@@ -37,9 +37,9 @@ public class _5_StockSpan {
 			}
 
 			if (stack.isEmpty()) {
-				ans.add(i+1);
+				ans.add(i + 1);
 			} else {
-				ans.add(i-stack.peek().getB());
+				ans.add(i - stack.peek().getB());
 			}
 			stack.push(new Pair(ele, i));
 

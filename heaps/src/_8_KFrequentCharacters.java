@@ -8,12 +8,13 @@ public class _8_KFrequentCharacters {
 		System.out.println(kFrequentCharacter("bcdaa", 3));
 		System.out.println(kFrequentCharacter("bcddaa", 2));
 	}
+
 	static String kFrequentCharacter(String str, int k) {
 		Map<Character, Integer> freqMap = new HashMap<>();
 
 		int n = str.length();
 
-		for (int i=0; i<n; i++) {
+		for (int i = 0; i < n; i++) {
 			char ch = str.charAt(i);
 			freqMap.put(ch, freqMap.getOrDefault(ch, 0) + 1);
 		}
@@ -33,12 +34,12 @@ public class _8_KFrequentCharacters {
 		}
 
 		int count = 0;
-		for (int i=0; i<list.size(); i++) {
-			if (i==0 || !list.get(i).getValue().equals(list.get(i - 1).getValue())) {
+		for (int i = 0; i < list.size(); i++) {
+			if (i == 0 || !list.get(i).getValue().equals(list.get(i - 1).getValue())) {
 				count++;
 			}
 			if (count == k) {
-				return list.get(i).getKey()+"";
+				return list.get(i).getKey() + "";
 			}
 		}
 		return "-1";

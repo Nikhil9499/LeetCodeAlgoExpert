@@ -6,7 +6,7 @@ public class AllPermutationsOfString {
 		String str = "abc";
 		printAllPermutations(str, "");
 		System.out.println();
-		printAllPermutations(str, 0, str.length()-1);
+		printAllPermutations(str, 0, str.length() - 1);
 		System.out.println("Print list of all string permutation");
 		List<String> ans = new ArrayList<>();
 		System.out.println(allPermutations(str, ans, "", str.length()));
@@ -20,9 +20,9 @@ public class AllPermutationsOfString {
 			return;
 		}
 
-		for (int i=0; i<str.length(); i++) {
+		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
-			String rem = str.substring(0, i) + str.substring(i+1);
+			String rem = str.substring(0, i) + str.substring(i + 1);
 			printAllPermutations(rem, ans + ch);
 		}
 
@@ -35,9 +35,9 @@ public class AllPermutationsOfString {
 			return;
 		}
 
-		for (int i=l; i<=r; i++) {
-			str = swap(str, l,i);
-			printAllPermutations(str, l+1, r);
+		for (int i = l; i <= r; i++) {
+			str = swap(str, l, i);
+			printAllPermutations(str, l + 1, r);
 			str = swap(str, l, i);
 		}
 
@@ -58,10 +58,10 @@ public class AllPermutationsOfString {
 			return ans;
 		}
 
-		for (int i=0; i<str.length(); i++) {
+		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
-			String rem = str.substring(0, i) + str.substring(i+1);
-			allPermutations(rem, ans,current + ch, n);
+			String rem = str.substring(0, i) + str.substring(i + 1);
+			allPermutations(rem, ans, current + ch, n);
 		}
 		return ans;
 	}
