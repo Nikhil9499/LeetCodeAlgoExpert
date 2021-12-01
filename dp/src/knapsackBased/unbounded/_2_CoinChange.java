@@ -28,7 +28,7 @@ public class _2_CoinChange {
 				}
 			}
 		}
-		printMatrix(dp);
+		//printMatrix(dp);
 		return dp[n][target];
 	}
 
@@ -46,7 +46,7 @@ public class _2_CoinChange {
 			}
 		}
 
-		printArray(dp);
+		//printArray(dp);
 		return dp[amt];
 	}
 
@@ -63,7 +63,7 @@ public class _2_CoinChange {
 			}
 		}
 
-		printArray(dp);
+		//printArray(dp);
 		return dp[amt];
 	}
 

@@ -35,7 +35,6 @@ public class _4_FloorCeilOfNumber {
 		if (index != -1) {
 			ans.add(arr[index]);
 			ans.add(arr[index]);
-			return ans;
 		} else {
 			if (high >= 0)
 				ans.add(arr[high]);
@@ -45,7 +44,7 @@ public class _4_FloorCeilOfNumber {
 				ans.add(arr[low]);
 			else
 				ans.add(Integer.MAX_VALUE);
-			return ans;
 		}
+		return ans;
 	}
 }

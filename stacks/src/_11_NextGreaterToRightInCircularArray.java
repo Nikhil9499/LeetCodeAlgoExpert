@@ -19,7 +19,7 @@ public class _11_NextGreaterToRightInCircularArray {
 		Stack<Integer> stack = new Stack<>();
 		int n = arr.length;
 
-		// preprocess(or fill) stack for last element
+		// preprocess(or fill) stack for all but last element
 		for (int i=n-2; i>=0; i--) {
 			while(!stack.isEmpty() && stack.peek()<=arr[i]) {
 				stack.pop();

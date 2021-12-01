@@ -37,7 +37,7 @@ public class _4_MaximumInWindowSizeK {
 		return ans;
 	}
 
-	// O(n)
+	// O(n); arr = {-7, -8, 7, 5, 7, 1, 6, 0} & k = 4
 	public static List<Integer> maxNumInWindowK(int[] arr, int k) {
 		List<Integer> ans = new ArrayList<>();
 

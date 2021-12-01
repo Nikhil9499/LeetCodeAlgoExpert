@@ -14,7 +14,7 @@ public class _2_LongestSubstringWithNoRepeatingChars {
 	public static int longestSubstringWithNoRepeatingChars(String str) {
 		int i = 0, j = 0, n = str.length();
 		Map<Character, Integer> map = new HashMap<>();
-		int start=0,end=0;
+
 		String ans = "";
 
 		int maxLen = 0;

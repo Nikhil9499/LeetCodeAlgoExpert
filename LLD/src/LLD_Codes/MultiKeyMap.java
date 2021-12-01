@@ -24,11 +24,11 @@ class Key<K1, K2> {
 		}
 
 		Key key = (Key) o;
-		if (!Objects.equals(key1, key.key1)) {
+		if (!Objects.equals(this.key1, key.key1)) {
 			return false;
 		}
 
-		return Objects.equals(key2, key.key2);
+		return Objects.equals(this.key2, key.key2);
 	}
 
 	@Override

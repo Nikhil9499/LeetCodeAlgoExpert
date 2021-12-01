@@ -35,7 +35,7 @@ class MultiMap<K, V> {
 	 * Returns the Collection of values to which the specified key is mapped,
 	 * or null if this multimap contains no mapping for the key.
 	 */
-	public Collection<V> get(Object key) {
+	public Collection<V> get(K key) {
 		return map.get(key);
 	}
 

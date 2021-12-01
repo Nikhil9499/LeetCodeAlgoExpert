@@ -13,12 +13,13 @@ public class _3_CountAnagrams {
 		//		String text = "aabaabaa";
 		//		String word = "aaba";
 
-		//		String text = "forxxorfxdofr";
-		//		String word = "for";
+				String text = "forxxorfxdofr";
+				String word = "for";
 
-		String text = "bpaa";
-		String word = "aa";
-		System.out.print(countAnagrams(text, word));
+//		String text = "bpaa";
+//		String word = "aa";
+		System.out.println(countAnagrams(text, word));
+		//System.out.println(findAnagrams(text, word));
 	}
 
 	public static List<Integer> findAnagrams(String txt, String ptr) {
