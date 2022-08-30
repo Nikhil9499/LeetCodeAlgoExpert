@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/arrays/arrays.iml" filepath="$PROJECT_DIR$/arrays/arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/binarySearch/binarySearch.iml" filepath="$PROJECT_DIR$/binarySearch/binarySearch.iml" />
       <module fileurl="file://$PROJECT_DIR$/dp/dp.iml" filepath="$PROJECT_DIR$/dp/dp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/graphs/graphs.iml" filepath="$PROJECT_DIR$/graphs/graphs.iml" />
       <module fileurl="file://$PROJECT_DIR$/heaps/heaps.iml" filepath="$PROJECT_DIR$/heaps/heaps.iml" />
       <module fileurl="file://$PROJECT_DIR$/leetcode/leetcode.iml" filepath="$PROJECT_DIR$/leetcode/leetcode.iml" />
       <module fileurl="file://$PROJECT_DIR$/linkedList/linkedList.iml" filepath="$PROJECT_DIR$/linkedList/linkedList.iml" />

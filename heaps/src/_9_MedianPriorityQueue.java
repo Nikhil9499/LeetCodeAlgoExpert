@@ -6,8 +6,8 @@ public class _9_MedianPriorityQueue {
 	private PriorityQueue<Integer> left, right;
 
 	public _9_MedianPriorityQueue() {
-		left = new PriorityQueue<>(Collections.reverseOrder());
-		right = new PriorityQueue<>();
+		left = new PriorityQueue<>(Collections.reverseOrder()); //maxHeap
+		right = new PriorityQueue<>(); // minHeap
 	}
 
 	public static void main(String[] args) {

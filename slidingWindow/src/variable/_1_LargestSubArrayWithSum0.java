@@ -8,7 +8,7 @@ import java.util.Map;
 public class _1_LargestSubArrayWithSum0 {
 	public static void main(String[] args) {
 		int[] arr = {2, 8, -3, -5, 2, -4, 6, 1, 2, 1, -3, 4};
-		int sum = 0;
+		int sum = 10;
 		System.out.println(lengthLargestSubArrayWithSum0(arr, sum));
 		System.out.println(largestSubArrayWithSum0(arr, sum));
 		System.out.println(countSubArrayWithSum0(arr, sum));

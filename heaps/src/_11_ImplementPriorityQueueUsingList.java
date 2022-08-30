@@ -21,7 +21,6 @@ public class _11_ImplementPriorityQueueUsingList {
 		obj.add(23);
 		obj.add(12);
 		obj.add(10);
-
 		System.out.println(obj.size());
 		System.out.println(obj.peek());
 		System.out.println(obj.remove());

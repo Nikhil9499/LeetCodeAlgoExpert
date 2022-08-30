@@ -13,11 +13,13 @@ public class _3_KSortedArray {
 		List<Integer> ans = new ArrayList<>();
 		PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
-		for (int i = 0; i < k; i++) {
+		// klogk
+		for (int i = 0; i <= k; i++) {
 			minHeap.add(arr[i]);
 		}
 
-		for (int i = k; i < arr.length; i++) {
+		//(n-k)logk
+		for (int i = k+1; i < arr.length; i++) {
 			ans.add(minHeap.remove());
 			minHeap.add(arr[i]);
 		}
