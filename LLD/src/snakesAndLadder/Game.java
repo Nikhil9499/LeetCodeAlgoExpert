@@ -50,17 +50,30 @@ public class Game {
         while (winner == null) {
 
             Player currPlayer = getCurrPlayer();
-            System.out.println("Current player with position is " + currPlayer);
 
-            int diceVal = dice.roll();
-            int newPosition = currPlayer.getCurrPosition() + diceVal;
-            newPosition = addJumpIfExists(newPosition);
-
-            currPlayer.setCurrPosition(newPosition);
+            boolean hasLandedOnLadder = false;
+            int newPosition = 0;
+            do {
+                System.out.println("Current player with position is " + currPlayer);
+                int diceVal = dice.roll();
+                newPosition = currPlayer.getCurrPosition() + diceVal;
+                if (newPosition >= board.getCells().length * board.getCells().length) {
+                    winner = currPlayer;
+                    break;
+                }
+                Cell cell = board.getCell(newPosition);
+                newPosition = addJumpIfExists(newPosition, cell);
+                currPlayer.setCurrPosition(newPosition);
+                if (cell.getJump() != null && cell.getJump().getJumpType().equals(JumpType.LADDER)) {
+                    hasLandedOnLadder = true;
+                } else {
+                    hasLandedOnLadder = false;
+                }
+            } while (hasLandedOnLadder);
             System.out.println("Current player with newPosition is " + currPlayer);
 
             // Winning logic: can have strategy pattern
-            if (newPosition >= board.getCells().length * board.getCells().length) {
+            if (winner == null && newPosition >= board.getCells().length * board.getCells().length) {
                 winner = currPlayer;
             }
 
@@ -70,14 +83,7 @@ public class Game {
         System.out.println("Winner is " + winner.getId());
     }
 
-    private int addJumpIfExists(int newPosition) {
-
-        if (newPosition >= board.getCells().length * board.getCells().length) {
-            return newPosition;
-        }
-
-        Cell cell = board.getCell(newPosition);
-
+    private int addJumpIfExists(int newPosition, Cell cell) {
         if (cell.getJump() != null && cell.getJump().getStart() == newPosition) {
             System.out.println("Had " + cell.getJump().getJumpType() + " so moving from " + cell.getJump().getStart() + " to " + cell
                     .getJump().getEnd());
