@@ -1,0 +1,14 @@
+How many dice?
+-> 1, but should be dynamic
+
+How many snakes and ladders ?
+-> dynamic via input
+
+Board size ?
+-> dynamic
+
+How many players ?
+-> Take 2 but should be dynamic
+
+Winning condition ?
+-> As soon as anyone wins, stop the game. Should be changeable.
