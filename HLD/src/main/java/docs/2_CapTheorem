@@ -1,0 +1,38 @@
+CAP Theorem:
+--------------
+
+- Desirable property of distributed system(DS) with replicated data(RD).
+- C = Consistency
+- A = Availability
+- P = Partition Tolerance
+- Achieving all three, i.e, CAP, is not possible in DS with RD.
+
+Follow the attached diagram to understand better.
+
+Why CAP is not possible ?
+- Assuming 2 variables, i.e, a=5 & d=2.
+
+- AP system:
+    - Suppose the communication breaks between DB nodes, i.e, node B & C.
+    - Now, if any write request comes consistency will be compromised.
+    - Let us assume, node B receives write request(make a = 6). Node B will update it to a=6 but node C still has the previous value of a , i.e, a=5.
+    - Due to above reasoning, consistency gets compromised but system is available and partition tolerant.
+
+- CP system:
+    - Suppose the communication breaks between DB nodes, i.e, node B & C.
+    - Now, if any write request comes consistency will be compromised but we need to maintain it somehow.
+    - So we will turn down node C till the system has partition.
+    - Imagine in diagram that node C has been turned down so any request routed to node C for data will get rejected or throw error.
+    - Due to above reasoning, availability gets compromised but system is consistent and partition tolerant.
+
+- CA system:
+    - Suppose the communication breaks between DB nodes, i.e, node B & C.
+    - Now, if any write request comes consistency will be compromised but we need to maintain it somehow.
+    - So we will turn down node C till the system has partition.
+    - But shutting down node C will compromise availability but we need to maintain this as well somehow.
+    - The only solution in this case is to turn/shut off the whole system till the partition exists.
+    - No requests will be served during this time.
+    - If system has partitions, it won't have consistency & availability simultaneously.
+
+- As we have seen that Partition(P) is something that we can't escape from in DS with RD so the only solution that is left
+    is to either go with CP or AP because turning the whole system down is not at all accepted in DS.

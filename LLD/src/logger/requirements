@@ -1,0 +1,7 @@
+Design and implement a logging library.
+
+-> There can be multiple appender – like file, network, db etc. Should be easy to add appender.
+-> Library should be easily configurable.
+-> Message format should be configurable.
+-> Logger should not add additional overhead.
+-> Must log to all appender simultaneously.

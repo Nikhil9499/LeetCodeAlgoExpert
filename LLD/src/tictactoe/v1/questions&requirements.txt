@@ -1,0 +1,12 @@
+Board size ?
+-> Flexible => Dynamic(Square)
+
+Symbols count & type ?
+-> 2 & (X, O) but should be dynamic as well.
+
+Players ?
+-> 2
+
+Assumptions:
+1. No custom symbol chooser for players
+2. No. of symbols needed = No. of players

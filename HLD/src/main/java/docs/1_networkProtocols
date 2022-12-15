@@ -1,0 +1,69 @@
+Network Protocols:
+--------------------
+
+We have 7 layers in OSI model.
+Here we will talk only about 2 of them, i.e, Application layer & Transport layer.
+
+1. Application Layer
+    1. Client to Server: Clients & servers talk to each other based on some rules & those rules are what defined the protocols.
+
+        - Http/Https: (HyperText Transfer Protocol{Secure})
+            - No. of connections = 1
+            - Only clients can send the data & server only responds back to clients.
+            - 1-way communication.
+
+        - FTP: (File Transfer Protocol)
+            - No. of connections = 2
+            - Control Connection:
+                - Communication is achieved through command and responses. Each command or response is only one short line.
+                - Remains open for whole process
+            - Data Connection:
+                - Client must define the type of file to be transferred via transmission mode.
+                - It closes once the transfer completes.
+                - Connection opens with the help of control connection.
+
+        - SMTP: (Simple Mail Transfer Protocol)
+            - Sends mail to server.
+            - Used along with IMap/Pop3: Receives/Download mails from server.
+            - Pop3 are not used nowadays because it downloads mails from server so other clients can't use the same now.
+            - IMap fetches the mail from server & not delete it so other clients can use the same.
+
+        - WebSockets:
+            - In this protocol, clients & servers both can talk to each other.
+            - 2-way communication.
+            - Clients still CAN'T talk to each other.
+            - Written over TCP
+            - Use-cases:
+                - Used in messaging apps.
+
+    2. Peer to Peer: Clients can talk to each other along with server.
+        - WebRTC:
+            - It uses UDP(preferred). TCP can also be used.
+            - Fast
+            - The RTCPeerConnection (media) will use TCP or UDP, while the DataChannel uses SCTP (Stream Control Transmission Protocol).
+            - The SCTP implementation used by Firefox is implemented on top of UDP
+
+2. Transport Layer:
+
+    1. TCP:
+        - 3-way handshake happens to form a connection.
+        - Stream-oriented, packet, byte and connection oriented protocol.
+        - Byte oriented means that the sender writes bytes into a TCP connection and the receiver reads bytes out of the TCP connection.
+        - It breaks the whole message into data packets.
+        - All data packets have a sequence number associated with it.
+        - At server side, server use sequence numbers for ordering.
+        - Corrupted data packets get discarded => have error handling methods
+        - For every packet received, client gets an ACK in return => retry is also there.
+        - Slow because of above reasons but guarantees message delivery.
+
+    2. UDP:
+        - No connection => connectionless
+        - No sequence number => no ordering
+        - No advance error handling methods, only basic checksum is there.
+        - Fast because of above 3 reasons.
+        - Maximum payload of 65,507 bytes for IPv4 and 65,527 bytes for IPv6.
+        - Packet-oriented
+        - No message delivery guarantee.
+        - Use-cases:
+            - Used in video conferencing apps like google meet, zoom, etc.
+            - Any streaming use-case.
