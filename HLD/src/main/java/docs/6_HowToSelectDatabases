@@ -1,0 +1,5 @@
+Database:
+    - Way of represent/storing data in a queryable/readable format
+    - Types:
+        - SQL
+        - NoSQL

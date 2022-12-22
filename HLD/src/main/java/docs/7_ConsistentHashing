@@ -1,0 +1,16 @@
+Consistent Hashing:
+    - Consistent Hashing is a distributed hashing scheme that operates independently of the number of servers or objects
+        in a distributed hash table by assigning them a position on an abstract circle, or hash ring.
+    - This allows servers and objects to scale without affecting the overall system.
+    - It solves the problem of VARIABLE servers count & re-balancing of keys.
+    - It leads to minimum re-balancing of keys = (1/n)% of keys re-balancing to the max.
+
+    - Explanation:
+        - It places all servers & all keys on virtual ring by using hash functions
+        - In clockwise direction, we serve the requests. The closest server in clockwise serves the requests.
+        - Hash functions used by server and keys positioning may or may not be the same.
+
+    - Problem & Solution with Consistent Hashing:
+        - If the hash function doesn't distribute the servers evenly, we will get uneven load on servers
+            - Use virtual node concept,i.e, keep servers at different virtual points using different hash functions
+            - Having multiple points of same servers will distribute load evenly.

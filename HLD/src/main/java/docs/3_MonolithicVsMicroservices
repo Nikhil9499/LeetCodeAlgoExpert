@@ -1,0 +1,31 @@
+Monolithic/Legacy:
+    - Having all features in a single application like authentication, authorisation, payments, (user, order, inventory) managements, etc.
+
+    - Pros:
+        - Easy deployment: One executable file or directory makes deployment easier.
+        - Development: When an application is built with one code base, it is easier to develop.
+
+    - Cons/Disadvantages:
+        - Overloaded IDEs.
+        - Scaling is hard.
+        - Tightly coupled: even a single line of code change will require complete deployment.
+        - Size of war/jar will be large, so deployment will take time.
+        - Scaling single feature like payments is impossible.
+        - Costly because complete application needs to scale which adds up extra software and hardware costs.
+        - Hard to debug.
+
+
+Microservices:
+    - Having different services for different use-cases/components that are independent of each other like user management,
+        payment management, inventory management, etc.
+
+    - Pros: All disadvantages of monolithic are advantages of microservices
+
+    - Cons:
+        - Proper division of components else can cause costs implication or tight coupling like too many api calls across services.
+        - Single api call resulting in changes in all microservices.
+        - Latency can increase if decomposition of monolith is not done properly.
+        - Break of services/clients if contracts change somehow in new development due to new code changes.
+        - Debugging becomes problematic when service breaks due to contract change. S1 -> S2 -> S3(change): S1, S2 will break.
+        - Transaction management is hard here.
+        - Suppose 1 request requires updates in 2 services db, what if 1 db call is success and other is failure. Rollback etc has to be done.

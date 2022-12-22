@@ -1,0 +1,25 @@
+Scaling from 0 to Million Users:
+    - Single Server
+    - Application & DB servers separation
+    - Load balancers + multiple application servers
+    - DB Replication
+    - Cache
+    - CDN:
+        - Points of presence, or PoPs
+        - Caching & static data like images, videos etc.
+    - Data center
+    - Messaging queue like Kafka, RabbitMQ, etc
+        - Brings async nature in application
+    - Database Scaling
+        - Vertical:
+            - We increase db capabilities like RAM, CPU, etc
+        - Horizontal:
+            - We can add more nodes with same or different capacities
+            - Implementation: Sharding
+                - Horizontal:
+                    - Divide into multiple tables(row-wise segregation)
+                    - Eg: Name-wise sharding like A-P: S1 & Q-Z: S2
+                - Vertical:
+                    - Divide into multiple tables(column-wise segregation)
+
+FAN OUT: Send data to everyone

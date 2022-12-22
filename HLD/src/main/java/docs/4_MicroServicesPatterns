@@ -1,0 +1,58 @@
+Microservice Patterns:
+
+ - Phases of creating microservices: Decomposition -- Database -- Communication -- Integration
+ - Microservices: MSs
+
+ - Decomposition:
+    - How will you break your monolithic into microservices ?
+    - How small will it be ?
+    - Types:
+        - Division by business capability(BC)
+        - Division by Domain/Domain Driver Design(DDD)
+        - Refer Image 4_DecompositionPattern.jpeg
+
+ - Communication:
+    - How will services talk to each other ?
+    - By Apis, by events, etc
+
+ - Integration:
+    - How to integrate services with different platforms ?
+    - Contracts, Api-gateway, etc.
+
+ - Strangler Pattern:
+    - Way of refactoring the monolith into microservices so that we ca routed only a part of traffic to the new developed MSs.
+    - Just like experimental service in Z
+    - Use weighted load balancing in api-gateway layer
+
+ - Databases:
+    - Should we got for separate DB for all services or shared DB across services ?
+    - Shared Database: (S1, S2, S3 are sharing DB1)
+        - Pros:
+            - Joins are easy
+            - ACID property can be maintained easily
+        - Cons:
+            - Scaling database for single service use-case is not possible
+            - Writes/Updates are tricky here because if S1 deletes a record and S2 try to read the same, it will create problems
+
+    - Per service database:
+        - Pros: Cons of Shared Database
+        - Cons:
+            - Joins are difficult: Solution is CQRS
+            - ACID property is hard to maintain. It can be maintained at service level but maintaining at overall application layer
+                is a difficult job: Solution is SAGA
+
+ - SAGA Pattern:
+    - Use events in order to change state of other services
+    - In case of failure, send failure events so that rollback can happen in the services from where the transaction started.
+    - Types:
+        - Hierarchy:
+            - Services take care of consuming both success and failure events and act accordingly
+            - Cyclic dependency can occur in this type.
+        - Orchestration:
+            - In this 1 orchestrator node will be there which is reponsible for sending events to services either for processing or for rollback.
+            - No cyclic dependency can occur in this type.
+
+ - CQRS Pattern:
+    - Creates a view for all db tables for reading records.
+    - Use events to push and populate/update in this view.
+    - Writes will happen in main services db

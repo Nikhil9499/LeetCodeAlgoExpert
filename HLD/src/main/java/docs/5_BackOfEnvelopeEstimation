@@ -1,0 +1,62 @@
+Back of Envelope Estimation:
+    - It drives our decision for system design
+
+    - In order to answer below questions, we use BoE estimation
+        - Do you really need LB ?
+        - Do you really need CDN ?
+        - How many applications servers will be used ?
+        - Capacity of database ?
+        - Size of cache(RAM) ?
+
+    - Considerations:
+        - It is rough(high level) estimations
+        - Do not spend much time over this(max is 10 minutes)
+        - Keep the assumption values simple like in multiples of 10 or 2 for easy computation
+
+    - Things to answer from BoE estimation
+        - No of servers
+        - RAM
+        - Storage capacity
+        - Trade-off: CAP theorem
+
+    - Cheatsheet: Refer the picture
+        - Eg: x Million users * y MB = xy TB
+          zeros:  (6)            (6)     (12)
+
+Examples:
+    1. Facebook:
+        - Traffic Estimation:
+            - Total users(TU) = 1 Billion
+            - DAU(Daily Active Users) = 25% of TU = 250 Million
+            - Read & Write Operations = 5 reads & 2 writes
+            - QPS/RPS = (250 million * 7 queries)/(24*60*60 seconds) = 18k QPS/RPS
+
+        - Storage Estimation:
+            - Every user is doing 2 post daily
+            - Size of each post is 250 characters (1 char = 2 bytes)
+            - 10% of DAU are uploading 1 image (Image size = 500kB)
+            - 1 post = 250 chars = 250 * 2 bytes = 500 bytes
+            - 2 posts = 2 * 500 bytes = 1000 bytes ~ 1kB
+
+            - Size required = DAU * post size
+                for chars   = 250 million * 1kB = 250 GB/day
+            - Size for storing image = DAU * image size
+                                     = 250 million * 500 kB = 125000 GB = 125 TB/day
+
+            - Capacity for 5 years(~2k days) = 2k * 250 GB = 500 TB (for posts)
+                                             = 2k * 125 TB = 500 PB (for images)
+
+        - RAM Estimation:
+            - For each user, we have a cache for last 5 posts
+            - Size for 1 user = 5 * 500 bytes(size of post) = 12500 bytes ~ 13kB
+            - Size for DAU = 250 million * 13kB = 3000 GB = 3TB
+            - If 1 Machine = 300 GB
+            - Total machines = (3000 GB) / 300 GB = 10 machines will be required.
+            - Latency: 500ms : 95% of the times, cache will be used => so low latency
+            - 1 server = 50 threads => 100 requests/second (1 req = 500ms => 1 sec = 2 reqs)
+            - No of application servers = 18k/100 = 180
+
+        - Trade-Off:
+            - We will go with AP,i.e, Availability and Partition Tolerance
+            - It is because facebook is a read-heavy system so we can drop consistency
+            - Showing stale data is still better than no data
