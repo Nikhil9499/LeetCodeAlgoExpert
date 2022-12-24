@@ -1,0 +1,75 @@
+Problem:
+    - Design a system that will generate a tiny url for a long url
+
+Requirements gathering:
+    - What should be the length of the unique identifier ?
+        - As small as possible
+    - What will be the traffic(QPS) ?
+        - 10M per day
+    - For how many years we need to support this service ?
+        - 100 years
+    - What characters should we use for id generation ?
+        - 0-9, a-z, A-Z (62 chars)
+    - Extras: Good to have
+        - Should we need to store any metrics as well like
+            - how many times a url is getting clicked
+            - custom short url support
+
+BoE Estimation:
+    - Request per day = 10 M
+    - Request per year = 365 * 10 M = 3650 M
+    - Request in 100 years = 100 * 3650 M = 365 Billion
+
+    - No. of chars = 62
+    - For   len = 1, combinations = 62^1 = 62
+            len = 2, combinations = 62^2 ~ 4k
+            len = 3, combinations = 62^3 ~ 250 K
+            len = 4, combinations = 62^4 ~ 15 M
+            len = 5, combinations = 62^5 ~ 916 M
+            len = 6, combinations = 62^6 ~ 56 B
+            len = 7, combinations = 62^7 ~ 3.6 T => This will solve our use-case
+            len = 8, combinations = 62^8 ~ 218 T
+    - So minimum length required = 7
+
+Design Discussion:
+    - In order to generate unique ids of len 7 for every request, we can consider below options to start with
+        - Hashing algorithms
+            - We will hash the long url.
+            - MD5:
+                - It has a length of 128 bits ~ 128/8 bytes = 16 bytes = 32 hex-digits (1 hex-digit can be represented in 4 bits ~ 0.5 bytes)
+                - So in order to use this we have to trim after length 7 which will result in collisions
+            - SHA-1:
+                - It has a length of 160 bits ~ 160/8 bytes = 20 bytes = 40 hex-digits (1 hex-digit can be represented in 4 bits ~ 0.5 bytes)
+                - So in order to use this we have to trim after length 7 which will result in collisions
+
+            - Because of above reason, we can't use hashing algorithms.
+
+
+        - Base62 encoding:
+            - We will encode the long url.
+            - In this approach we get the problem of length criteria & creating unique id for each request.
+                - Length issue:
+                    - We can fix the length issue by padding it with '=' to get minimum length
+
+                - UniqueId generator:
+                    - check unique id generator design & discussion
+
+        - Check design image
+
+    - Flow:
+        - Clients hit with longUrl as a param
+        - LB will have rate-limiting algorithms to safe app-servers from DoS attack & forward the request to the servers
+        - Application servers will check whether it has some value from range left or not,
+            - If not, it will ask zookeeper to give it another range of unique numbers
+        - Now, application servers will return a unique id to app servers and servers will encode it using Base62 encoding
+            and add padding if necessary
+        - Finally servers will save the shortUrl in the cache and in the database along with longUrl and return it to client as well
+
+        - When clients hit shortUrl, servers first check cache for its presence
+            - cache hit, servers directly redirect shortUrl to the longUrl
+            - cache miss, servers hit db and fetch the longUrl, saves it in the cache and redirects to the longUrl
+        - For analytics, redirection 302 is required.
+            - Redirection 301 means that the requested URL has "PERMANENTLY" moved to the long URL, so browser caches it
+                & subsequent calls won't come to our servers at all.
+            -  Redirection 302 means that the requested URL has "TEMPORARILY" moved to the long URL, so browser doesn't cache
+                it & subsequent calls come to our url shortening servers.

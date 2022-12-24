@@ -1,0 +1,96 @@
+Problem:
+    - Design key-value store/database
+
+Uses:
+    - "Add to Cart" section of any application
+
+Requirement gathering:
+    -
+
+Goals:
+    - Scalability: Consistent Hashing
+    - De-centralization: Replication with Gossip Protocol
+    - Eventual consistency: Data versioning
+
+Steps:
+    - Partition:
+        - Nodes in a virtual ring -> Consistent Hashing
+        - Virtual node concept to avoid uneven load on servers
+
+    - Replication:
+        - Coordinator: first server that takes the key & serves request & preference list (in which servers replicas are stored)
+        - When will preference list be created ?
+            - We have no. of replicas count beforehand say N = 3.
+            - During replication, it starts with coordinator server and move clockwise (N-1) servers and do the replication
+                and create a preference list.
+            - Replication can have different algorithms like copying in servers which are in diff data centers or exclude
+                current server(chances of occurring are there because of consistent hashing virtual node concept)
+            - This node state information will be sent to all the nodes via gossip protocol
+
+    - Get & Put operation:
+        - R + W > N;
+            - R = min no. of servers that should respond for read
+            - W = min no. of servers that should write and respond back for write
+            - N = replica count
+
+        - Put request:
+            - When we receive a put request, we find the hash first then check which server is handling that hash value,
+                - i.e, put(k1, 10) -> hash(k1) = 45. Now we will use 45 to search the server
+            - How do we check which server is handling that hash value ?
+                - We can use load balancer which will have a copy of the preference list and coordinator -> latency: low
+                - In case of general LB, since every server knows about other server via gossip protocol, request will be routed to
+                    the correct server -> Hopping will happen in this -> latency high
+            - Now we have the coordinator server, value will be save there first and then based on no. of replica(N),
+                replication will happen at (N-1) servers based on preference list
+            - For returning success response to client, we need at-least W successes from replicas.
+            - Post receiving W successes, success is returned to client. If not, error happens.
+
+        - Get Request:
+            - When we receive a get request, first correct server is to be searched.
+            - After knowing the server, value will be fetched along with value requests to replica servers using preference
+                list for reason see data versioning and vector clock
+            - Finally after getting R successes, success is sent to the client. If not, error occurs.
+
+    - Data versioning
+        - What is the need of read replica and wait for success response from replica set ?
+            - It is needed because it could be the case that several put requests have come for a key and servers were down. So every
+                server will have a different value for that key. To avoid this, we wait for responses from other servers.
+
+        - How in the system different values can come ?
+                    - via updates of same key
+
+        - How vector clocks solve above problem ?
+            - Vector clock is a list of (server, count) for each object(key).
+            - Suppose 3 servers are there. We have a put request = put(k1, 10)
+                - S1,S2,S3 -> (k1, 10), vector clock(S?, 1): ? is server number
+                - S1 is down & we have a put request = put(k1, 20): S2,S3 -> (k1, 20)(S1, 1)(S2,1), (k1, 20)(S1, 1)(S3,1)
+                - we have a put request = put(k1, 30): S2,S3 -> (k1, 30)[(S1, 1)(S2,2)], (k1, 30)[(S1, 1)(S2,2)(S3,2)]
+                - S2 is down & we have a put request = put(k1, 40): S3 -> (k1, 40)[(S1, 1),(S2, 2),(S3,3)]
+                - Now all servers are UP again and we have a get request: get(k1)
+                    - S1: (k1, 10)[(S1, 1)]
+                    - S2: (k1, 30)[(S1, 1)(S2,2)]
+                    - S3: (k1, 40)[(S1, 1),(S2, 2),(S3,3)]
+                    - Value returned will be 40 because everything else cancels out
+        - Due to above point, we have eventual consistency
+
+    - Gossip protocol
+        - Gossip protocol is a communication protocol that allows state sharing in distributed systems.
+        - Most modern systems use this peer-to-peer protocol to disseminate information to all the members in a network or cluster.
+        - This protocol is used in a decentralized system that does not have any central node to keep track of all nodes and know
+            if a node is down or not.
+        - The protocol enables each node to keep track of state information about the other nodes in the cluster, such as which nodes
+            are reachable, what key ranges they are responsible for, and so on (this is basically a copy of the hash ring). Nodes s
+            hare state information to stay in sync.
+        - Seed Nodes:
+            - Seed nodes
+                - The gossip protocol can result in a logical partition of the cluster in a particular scenario. Let’s understand this with an example:
+                - An administrator joins node A to the ring and then joins node B to the ring. Nodes A and B consider themselves part
+                    of the ring, yet neither would be immediately aware of each other. To prevent these logical partitions, some distributed
+                    systems use the concept of seed nodes. Seed nodes are fully functional nodes and can be obtained either from a static
+                    configuration or a configuration service. This way, all nodes are aware of seed nodes. Each node communicates with
+                    seed nodes through gossip protocol to reconcile membership changes. Therefore, logical partitions are highly unlikely.
+
+    - Merkle tree
+        - This is also k/a Binary hash trees
+        - This is used to identify the failed range of data sync during replication based on hash value. Refer diagram.
+

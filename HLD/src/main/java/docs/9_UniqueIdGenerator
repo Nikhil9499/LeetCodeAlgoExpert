@@ -1,0 +1,49 @@
+Problem:
+    - Design a system that will generate a unique id everytime it is called.
+
+Requirements gathering:
+    - What should be the length of the unique identifier ?
+        - 64-bit
+    - What will be the traffic(QPS) ?
+        - 10k per second
+    - For how many years we need to support this service ?
+        - 50 years
+    - What characters should we use for id generation ?
+        - 0-9(only numbers)
+    - What are the characteristics of unique IDs ?
+        - Ids should be unique and sortable by time
+
+Approaches:
+    - Multi-Master Replication
+        - This approach uses auto-increment feature of databases.
+        - Increment count by K where K is no of servers
+        - Addition and deletion of servers will be problematic
+        - Issues with multiple datacenters
+
+    - UUID
+        - 128 bit number
+        - As per wikipedia, if we generate 1B uuids per second for 100 years, probability of creating a
+            single duplicate will reach 50% only.
+        - Easy to generate. No co-ordination between servers so 0 sync issues.
+        - It could be non-numeric as well
+        - It will not go up with time => not time sortable
+
+    - Ticket Server
+        - Easy to implement
+        - Single point of failure(SPoF)
+        - If we solve SPoF, data synchronization issue will come.
+
+    - Snowflake
+        - 64-bit id
+        -  1 bit : sign bit: it will always be 0
+          41 bits: timestamp: ms since epoch or custom epoch.
+           5 bits: datacenter: 2^5 datacenters
+           5 bits: machine id: 2^5 machines
+          12 bits: sequence number: for every id generated on that machine/process, it is incremented by 1.
+            The number resets to 0 every millisecond. This means every machine can generate 2^12 new ids per millisecond
+        - It will exhaust in 69 years 2^41. Then we have to take a new epoch time or some other technique
+
+    - Zookeeper
+        - Based on traffic, zookeeper will have ranges on its table
+        - Zookeeper will assign 1 unique range of values to each server hence removing same id generation
+        - When the server use of the values or restart, it will ask zookeeper again for a new unique range.
