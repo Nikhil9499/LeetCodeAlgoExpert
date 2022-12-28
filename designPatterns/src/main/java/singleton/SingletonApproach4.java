@@ -11,7 +11,8 @@ public class SingletonApproach4 {
     */
     private static volatile SingletonApproach4 instance;
 
-    private SingletonApproach4() {}
+    private SingletonApproach4() {
+    }
 
     public static SingletonApproach4 getInstance() {
         if (instance == null) {

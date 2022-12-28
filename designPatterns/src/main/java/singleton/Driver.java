@@ -7,7 +7,7 @@ public class Driver {
         SingletonApproach1 obj2 = SingletonApproach1.getInstance();
 
         if (obj1 == obj2) {
-            System.out.println(obj1+" "+obj2);
+            System.out.println(obj1 + " " + obj2);
             System.out.println("SingletonApproach1: Objects are same");
         } else {
             System.out.println("SingletonApproach1: Objects are not same");
@@ -19,7 +19,7 @@ public class Driver {
         SingletonApproach2 o2 = SingletonApproach2.INSTANCE;
 
         if (o1 == o2) {
-            System.out.println(o1+" "+o2);
+            System.out.println(o1 + " " + o2);
             System.out.println("SingletonApproach2: Objects are same");
         } else {
             System.out.println("SingletonApproach2: Objects are not same");
@@ -32,7 +32,7 @@ public class Driver {
         SingletonApproach3 object2 = SingletonApproach3.getInstance();
 
         if (object1 == object2) {
-            System.out.println(object1+" "+object2);
+            System.out.println(object1 + " " + object2);
             System.out.println("SingletonApproach3: Objects are same");
         } else {
             System.out.println("SingletonApproach3: Objects are not same");
@@ -44,7 +44,7 @@ public class Driver {
         SingletonApproach4 ob2 = SingletonApproach4.getInstance();
 
         if (ob1 == ob2) {
-            System.out.println(ob1+" "+ob2);
+            System.out.println(ob1 + " " + ob2);
             System.out.println("SingletonApproach4: Objects are same");
         } else {
             System.out.println("SingletonApproach4: Objects are not same");

@@ -7,7 +7,7 @@ public class ErrorProcessor extends LogProcessor {
 
     @Override
     public void logRequest(int logLevel, String message) {
-        if(logLevel == ERROR) {
+        if (logLevel == ERROR) {
             System.out.println(message);
         } else {
             System.out.println("Unable to handle request @ ERROR level. Going for the next processor");

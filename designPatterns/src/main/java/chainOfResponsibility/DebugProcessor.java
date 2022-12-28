@@ -7,7 +7,7 @@ public class DebugProcessor extends LogProcessor {
 
     @Override
     public void logRequest(int logLevel, String message) {
-        if(logLevel == DEBUG) {
+        if (logLevel == DEBUG) {
             System.out.println(message);
         } else {
             System.out.println("Unable to handle request @ DEBUG level. Going for the next processor");

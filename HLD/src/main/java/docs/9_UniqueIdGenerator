@@ -43,7 +43,7 @@ Approaches:
             The number resets to 0 every millisecond. This means every machine can generate 2^12 new ids per millisecond
         - It will exhaust in 69 years 2^41. Then we have to take a new epoch time or some other technique
 
-    - Zookeeper
+    - Zookeeper/Token Service
         - Based on traffic, zookeeper will have ranges on its table
         - Zookeeper will assign 1 unique range of values to each server hence removing same id generation
         - When the server use of the values or restart, it will ask zookeeper again for a new unique range.

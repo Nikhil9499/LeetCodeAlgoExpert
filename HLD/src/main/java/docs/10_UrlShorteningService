@@ -2,18 +2,27 @@ Problem:
     - Design a system that will generate a tiny url for a long url
 
 Requirements gathering:
-    - What should be the length of the unique identifier ?
-        - As small as possible
-    - What will be the traffic(QPS) ?
-        - 10M per day
-    - For how many years we need to support this service ?
-        - 100 years
-    - What characters should we use for id generation ?
-        - 0-9, a-z, A-Z (62 chars)
-    - Extras: Good to have
-        - Should we need to store any metrics as well like
-            - how many times a url is getting clicked
-            - custom short url support
+    - Functional requirements:
+        - What should be the length of the short URL ?
+            - As small as possible
+        - What will be the traffic(QPS) ?
+            - 10M per day
+        - For how many years we need to support this service ?
+            - 100 years
+        - What characters should we use for id generation ?
+            - 0-9, a-z, A-Z (62 chars)
+        - Extras: Good to have
+            - Should we need to store any metrics as well like
+                - how many times a url is getting clicked
+                - custom short url support
+                - geography from where people come from(Ip address)
+                    - this will be important in deciding primary data-centers
+                - kinds of devices used (user-agents)
+                - request will have some useful headers like Ip address, user-agents, platform, etc
+
+    - Non-functional requirements:
+        - Very low latency
+        - Very high availability
 
 BoE Estimation:
     - Request per day = 10 M
@@ -73,3 +82,24 @@ Design Discussion:
                 & subsequent calls won't come to our servers at all.
             -  Redirection 302 means that the requested URL has "TEMPORARILY" moved to the long URL, so browser doesn't cache
                 it & subsequent calls come to our url shortening servers.
+
+    Design 2: Check picture
+    - For 3.5 T or more, Mysql will start facing some issues and we probably need to shard the data, so
+        it's better to go with Cassandra.
+        - Trillions of records adds size (often significantly) to databases, can hurt performance,
+            and may lead to questions about maintaining billion-record MySQL instances.
+
+    - Analytics:
+        - Request will have some useful headers like Ip address, user-agents, platform, etc that we can use for analytics
+        - We can send each request metadata to kafka but this will increase latency
+        - We can do this asynchronously so that latency doesn't take any hit but some events might be lost
+        - We can store request metadata in in-memory queue and flush to kafka after either a fixed time interval or
+            when the in-memory queue is full
+        - Flush will be done by some cron job or consumer in the background.
+        - Token service will be backed by rdbms. Scaling this service is not an issue because we can do
+            horizontal scaling very easily.
+        - We are using RDBMS so that we can use it's transactional property to avoid collisions.
+        - RDBMS schema:
+            - unique_range: id, unique_id_range, isAvailable
+            - Query: select unique_id_range from unique_range where isAvailable = true limit 1;
+

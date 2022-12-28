@@ -2,4 +2,47 @@ Database:
     - Way of represent/storing data in a queryable/readable format
     - Types:
         - SQL
+            - Structured information
+            - Need ACID properties like in payment system
+            - MySql, Postgres, Oracle, SQL Server
+            - If ACID properties are not needed, we can choose anything based on requirement.
         - NoSQL
+            - Non-structured data
+            - More data-types or more query patterns
+                - Document db
+                - MongoDB, CouchBase
+            - Ever-increasing data + finite queries
+                - Columnar db
+                - Cassandra(not very heavy to deploy), Scylla, HBase
+            - Key-Value Store
+                - Dynamo DB
+            - Graph database
+                - Neo4j, GraphQL
+
+    - In-memory solutions:
+        - Redis
+        - Memcache
+
+    - Frequently used data which are not updating much
+        - Caching is the solution: Redis
+
+    - Images, videos, audios, etc are stored in blob storage
+        - Amazon S3
+
+    - Static/blob resources distribution like images, videos, etc
+        - CDN: for fast retrieval because it is geo-based.
+
+    - Text search / fuzzy search:
+        - Elastic search and solar
+        - Fuzzy search: If someone mis-spell any word during search, it should return some records by using
+            edit distance algorithm like 'airprt' search should return results related to airport.
+
+    - Time-series database:
+        - If we are trying to build something like grafana or any metrics based application
+        - It is only append-only write mode.
+        - Read queries are time ranges
+        - OpenTS database is an example of time-series db
+
+    - Analytics on data of whole company
+        - Data warehouse
+        - Hadoop is an example

@@ -7,6 +7,7 @@ public abstract class LogProcessor {
     public static int WARN = 4;
 
     private LogProcessor next;
+
     public LogProcessor(LogProcessor next) {
         this.next = next;
     }
