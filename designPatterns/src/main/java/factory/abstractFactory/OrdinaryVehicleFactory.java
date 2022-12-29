@@ -1,7 +1,5 @@
 package factory.abstractFactory;
 
-import factory.abstractFactory.luxuryVehicles.Audi;
-import factory.abstractFactory.luxuryVehicles.Mercedes;
 import factory.abstractFactory.ordinaryVehicles.HondaCity;
 import factory.abstractFactory.ordinaryVehicles.SwiftDesire;
 

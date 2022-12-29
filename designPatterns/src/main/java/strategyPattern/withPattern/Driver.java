@@ -1,8 +1,5 @@
 package strategyPattern.withPattern;
 
-import strategyPattern.withPattern.driveStrategy.NormalDriveStrategyStrategy;
-import strategyPattern.withPattern.driveStrategy.SportyDriveStrategy;
-
 //Strategy pattern is used when children within inheritance tree same some common methods.
 // Here sporty implementation is the common one
 
