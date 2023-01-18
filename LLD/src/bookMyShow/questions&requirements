@@ -1,0 +1,9 @@
+- Do LLD of Movie booking app like BookMyShow
+
+- Flow is attached in the picture. CHeck that.
+
+- User will check movie based on location only.
+    - User who is in Bangalore has nothing to do with movies that are running in Delhi.
+
+- No 2 users should book the same seat. No concurrency issue should be present.
+

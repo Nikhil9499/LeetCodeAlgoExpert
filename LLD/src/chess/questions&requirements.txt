@@ -1,0 +1,30 @@
+Board size ?
+-> Flexible => Dynamic(Square) -> Take 8x8 board to start with.
+
+Color ?
+-> Custom => Take black and white to start with.
+
+Players ?
+-> 2
+
+
+Assumptions:
+    - Every board cell will be either empty or have some chess piece.
+    - Every piece can either only move or move and kill both.
+    - Same color pieces can't kill each other.
+    - Based on type, different pieces move differently.
+
+How game will be played:
+    - We will get inputs from players, i.e, final cell position of a particular piece from initial position.
+    - Before making the move, we will check whether the move is valid or not.
+    - If it's valid, we will move it else we will ask the player to re-enter the move.
+
+Objects involved:
+    - Game: Board & Player
+    - Player
+    - Board: Cell
+    - Cell: Piece, co-ordinates(x, y)
+    - Piece: PieceType
+    - PieceType
+
+

@@ -1,0 +1,8 @@
+1. DRY: Don't Repeat Yourself.
+    - It means that you should not re-write the same piece of code again.
+    - Instead your design should be such that you can always re-use the same code again in future, if needed.
+
+2. KISS: Keep It Simple, Stupid.
+    - It is a design principle which states that designs and/or systems should be as simple as possible.
+    - Wherever possible, complexity should be avoided in a system—as simplicity guarantees the greatest levels of user acceptance and interaction.
+
