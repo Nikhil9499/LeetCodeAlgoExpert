@@ -1,12 +1,13 @@
 import org.w3c.dom.Node;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Test {
 	public static void main(String[] args) {
-		char ch = "-1".charAt(0);
 		System.out.println("Nikhil solving LeetCode");
-		"".replace(" ", "a");
+		List<String> keys = List.of("test1", "test2");
+		System.out.println(String.format("ADMIN_DROPDOWN : No data found for the keys %s", String.join(",", keys)));
 
 		System.out.println(firstRep("go"));
 
