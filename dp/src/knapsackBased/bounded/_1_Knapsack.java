@@ -19,6 +19,11 @@ public class _1_Knapsack {
 			Arrays.fill(dp[i], -1);
 		}
 		System.out.println(knapsackTabular(wt, val, n, W, dp));
+
+		for (int i = 0; i <= n; i++) {
+			Arrays.fill(dp[i], -1);
+		}
+		System.out.println(knapsackTabularPractise(wt, val, n, W, dp));
 	}
 
 	public static int knapsackRecursive(int[] wt, int[] val, int n, int W) {
@@ -62,6 +67,22 @@ public class _1_Knapsack {
 				}
 			}
 		}
+		return dp[n][W];
+	}
+
+	public static int knapsackTabularPractise(int[] wt, int[] val, int n, int W, int[][] dp) {
+		for (int i=0; i<=n; i++){
+			for (int j=0; j<=W; j++) {
+				if (i==0 || j==0) {
+					dp[i][j] = 0;
+				} else if (j < wt[i-1]) {
+					dp[i][j] = dp[i-1][j];
+				} else {
+					dp[i][j] = Math.max(dp[i-1][j], val[i-1] + dp[i-1][j-wt[i-1]]);
+				}
+			}
+		}
+
 		return dp[n][W];
 	}
 }

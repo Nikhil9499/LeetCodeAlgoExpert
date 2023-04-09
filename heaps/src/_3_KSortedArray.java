@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 public class _3_KSortedArray {
 	public static void main(String[] args) {
-		int arr[] = {6, 5, 2, 3, 8, 10, 9};
+		int[] arr = {6, 5, 2, 3, 8, 10, 9};
 		int k = 3;
 		System.out.println(kSortedArray(arr, k));
 	}

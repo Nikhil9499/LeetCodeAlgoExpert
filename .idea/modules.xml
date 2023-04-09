@@ -14,10 +14,8 @@
       <module fileurl="file://$PROJECT_DIR$/leetcode/leetcode.iml" filepath="$PROJECT_DIR$/leetcode/leetcode.iml" />
       <module fileurl="file://$PROJECT_DIR$/linkedList/linkedList.iml" filepath="$PROJECT_DIR$/linkedList/linkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/random/random.iml" filepath="$PROJECT_DIR$/random/random.iml" />
-      <module fileurl="file://$PROJECT_DIR$/recursion&amp;backtracking/recursion&amp;backtracking.iml" filepath="$PROJECT_DIR$/recursion&amp;backtracking/recursion&amp;backtracking.iml" />
       <module fileurl="file://$PROJECT_DIR$/slidingWindow/slidingWindow.iml" filepath="$PROJECT_DIR$/slidingWindow/slidingWindow.iml" />
       <module fileurl="file://$PROJECT_DIR$/stacks/stacks.iml" filepath="$PROJECT_DIR$/stacks/stacks.iml" />
-      <module fileurl="file://$PROJECT_DIR$/strings/strings.iml" filepath="$PROJECT_DIR$/strings/strings.iml" />
       <module fileurl="file://$PROJECT_DIR$/trees/trees.iml" filepath="$PROJECT_DIR$/trees/trees.iml" />
     </modules>
   </component>

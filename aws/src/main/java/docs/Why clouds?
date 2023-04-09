@@ -1,0 +1,190 @@
+Before clouds:
+    - Whenever we have to launch a new website, we need to buy stack of servers to host our website.
+        => setup is expensive
+    - Buying all these servers is very expensive.
+    - Due to varying traffic, we might need to scale up our servers
+        => buying more servers => more money
+        => Also, most of the time our servers will sit idle doing nothing but it is still costing us the money.
+    - Maintenance and monitoring of servers.
+    - Security
+    - We might end up focussing on server side more instead of business.
+    - Nowadays, incoming data is very huge and it's not possible to save everything in normal db
+        => End up buying larger db => more money
+        => More need of space is there
+
+What is cloud ?
+    - Cloud services are infrastructure, platforms, or software that are hosted by third-party providers and made available to contestants through the internet.
+    - There are three main types of as-a-Service solutions: IaaS(Infrastructure as a service), PaaS(Platform as a service), and SaaS(Software as a service).
+    - Huge space available on internet where you can store data, host website, etc.
+    - Read more at https://www.geeksforgeeks.org/difference-between-iaas-paas-and-saas/
+    - It made sure that contestants are able to orchestrate their resources efficiently.
+    - One can rent services and pay only for what is required.
+    - Things like maintenance, monitoring, security, etc of servers are handled by 3rd-parties(those who are offering services for rent)
+    - Because of above reason, we can completely focus oon business.
+
+What is cloud computing ?
+    - Cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over
+        the Internet (“the cloud”) to offer faster innovation, flexible resources, and economies of scale.
+
+    - Service Models: Check pic
+        - SaaS: Software as a Service
+            - 3rd party owned services and they rent/leases out to its clients for use and charge them based on their usage.
+            - Software is maintained by 3rd party and clients are only using it and paying 3rd parties based on their usage.
+            - Eg: Google offers gmail and charges clients, workspan offers CRM to clients and charges them, etc...
+
+        - PaaS: Platform as a Service
+            - It is a service where a third-party provider provides both software and hardware tools to the cloud computing.
+            - The tools which are provided are used by developers.
+            - Abstract contestant form underlying OS, middlewares, etc.
+
+        - Iaas: Infrastructure as a Service
+            - The complete infra is provided to the contestant for building & deploying the application
+            - User don't have to worry about the physical machines being used behind the scenes
+            - Abstract the contestant from physical machine involved for infra.
+
+    - Deployment Models: Types of clouds
+        - Public:
+            - Service provider makes resources such as applications and storage for general public available over the internet
+            - Easy set up
+            - No resource wastage because we pay for what we use
+            - Eg: CLoud storage space provided by gmail, etc
+
+        - Private:
+            - Same as public but it is behind a firewall
+            - Provides security and used by companies to secure its data
+
+        - Hybrid:
+            - Mix of private and public models
+
+    - Cloud Providers:
+        - Amazon AWS
+        - Microsoft Azure
+        - Google Cloud Platform
+        - Digital Ocean
+        - IBM Cloud
+        - Terremark
+
+    - Introduction to AWS:
+        - It is a secure cloud services platform, offering compute power, db storage,
+            content delivery & other functionality to help businesses scale and grow.
+        - Its compute power is 6x than other cloud providers compute power.
+
+        - Use-cases:
+            - Media company - store content
+            - Architecture consulting
+            - Manufacturing organisation - handles all infra, full focus on bisiness
+            - Global reach - Training in large enterprises
+
+        - Advantages/features of AWS:
+            - Flexibility: Management of huge amount of data, deployment, etc
+            - Highly cost effective: Provides free spcae for 1 year(free tier) and also paid services only for the time we are using.
+            - Scalability: Easy to scale up & down => based on varying traffic, services are scaled accordingly.
+            - Security: Provides security so we can focus on business.
+
+        - AWS Architecture: Check pics 2.1 & 2.2
+            - Regions:
+                - Amazon cloud computing resources are hosted in multiple locations world-wide.
+                - These locations are composed of AWS Regions, Availability Zones, and Local Zones.
+                - Each AWS Region is a separate geographic area.
+                - Each AWS Region has multiple, isolated locations known as Availability Zones.
+
+            - Availability Zones:
+                - Availability Zones are multiple, isolated locations within each Region.
+                - Local Zones provide you the ability to place resources, such as compute and storage, in multiple locations closer to your end contestants.
+                - To ensure resiliency, a minimum of three separate availability zones are present in all availability zone-enabled regions.
+                - Both the Edge Locations (EL) and Availability Zones (AZ) are AWS Data Centers,
+                    but EL are primarily used for caching of the data to provide better contestant experience with low latency,
+                    the AZ are used for hosting servers, websites, applications, software, Big Data processing, analytics and a wide variety of use cases.
+                - AZ are big and few when compared to the EL. Also, the EL are closer to the contestant providing better latency when compared to the AZ.
+
+        - Domains of AWS:
+            - Compute: EC2(Elastic Cloud Compute) - clean slate - nothing is present.
+            - Elastic beanstalk: Don't have to worry about underlying infra.
+            - Migration: Move data from 1 DC to another. AWS SnowBall can be used.
+            - Security & Compliance: KMS
+            - Storage: S3, Glacier, CloudFront
+            - Networking: VPC,
+            - Messaging: SNS
+            - Databases: RDS, Arora, DynamoDB
+            - Management tools: CloudWatch
+
+        - What is an instance ?
+            - An instance is a virtual server for running applications on Amazon EC2.
+            - It can also be understood like a tiny party of a larger computer,
+                a tiny part which has its own hard drive, network connection, oS, etc.
+            - But it is actually all virtual.
+            - Different applications are required for Mac, Windows, other OSs and run those applications
+                on servers with different space required. So we can't have different hardware for diff
+                applications. Solution is instance.
+            - System on top of which we have parts each part is an instance - Virtualization
+            - One such instance of that virtual env is an instance.
+
+        - What is EC2 ?
+            - Amazon Elastic Compute Cloud, EC2 is a web service from Amazon that provides re-sizable
+                compute services in the cloud.
+            - Pros: Scalable, Flexible, Cost efficient
+
+        - Types of instances
+            - General purpose instance: Require quick response but low cost. Eg: email system
+            - Compute instances: lot of computation(more CPU). Eg: Analysing streaming data
+            - Memory instance: Heavy in nature(more RAM). Eg: MultiTasking system
+            - Storage instance: need to store huge data. Eg: Large sized application
+            - GPU instances: heavy graphics rendering. Eg: 3D Modelling
+
+        - EC2 Pricing Models:
+            - On-Demand: instance will be available whenever we ask/need. Say hourly basis.
+            - Dedicated: instances given to org so as to have security on data. Isolation need.
+            - On Spot: its like a bid, say 10$ for an instance, if any instance is present
+                it will be returned but the same instance price can increase after sometime so it will be
+                taken away from you. Good if data is volatile.
+            - Reserved: its like renting an apartment on a contract basis
+                -> fix rent
+                -> less cost since longer duration
+
+        - EC2 instances based on their functioning:
+            - Burstable: if I need cpu utilization of 20%, but suddenly traffic increases.
+                this will bursts to 100% CPU. This is a good choice.
+            - EBS Optimised: App in which data is processing at high speeds.
+            - Cluster Networking: cluster of instances
+            - Dedicated: Same as above.
+
+        -
+        -
+
+    -
+    -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

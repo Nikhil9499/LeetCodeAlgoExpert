@@ -176,8 +176,7 @@ class Admin extends RegisteredUser {
 
 	public List<Vehicle> getAllBookedVehiclesDetails(Map<String, Vehicle> vehicleMap, Map<Integer, BookingInfo> bookingInfoMap) {
 		List<Vehicle> vehicleList =
-			vehicleMap.values().stream().filter(vehicle -> vehicle.getVehicleStatus() == VehicleStatus.RENTED)
-				.collect(Collectors.toList());
+				vehicleMap.values().stream().filter(vehicle -> vehicle.getVehicleStatus() == VehicleStatus.RENTED).toList();
 		List<Vehicle> ans = new ArrayList<>();
 		bookingInfoMap.values().forEach(bookingInfo -> {
 			Optional<Vehicle> first =

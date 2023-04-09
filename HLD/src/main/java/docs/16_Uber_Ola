@@ -1,0 +1,62 @@
+Problem:
+    - Design a cab booking system like ola, uber, etc.
+
+Requirements:
+    - Functional:
+        - See cabs
+        - ETA & pricing
+        - Book a cab
+        - Location Tracking
+        - Analytics
+
+    - Non-Functional:
+        - Global
+        - low latency
+        - high availability
+        - high consistency
+        - Scale:
+            - 100M MAU
+            - 20M riders/day
+
+- Components:
+    - Cab Request Service: (CRS)
+        - It basically routes request to respective services to book a cab
+        - It calls CFS to find a cab wrt rider lat, long
+        - CFS calls location service to get a list of drivers present in the vicinity of rider segment
+        - Then it calls driver priority service to filter out the driver and choose the driver as per conditions.
+        - It then calls trip service to create trip entry in db
+        - Finally it ask web socket manager to push contestant details to driver by finding the web socket handler the chosen driver is connected to.
+        - Driver details are shared to contestant as well.
+
+    - Location Service:
+        - It talks to google map service to get info like segments, ETAs, routes, etc wrt rider (lat, long)
+        - It also stores which all drivers are present in various segments.
+        - It also stores driver updated locations in cassandra
+
+    - Cab Finder Service: (CFS)
+        - This will talk to location service wrt rider latitude and longitude.
+        - Give me all the drivers wrt segment which is in the vicinity of the rider segment.
+        - Location service will check its mapping and return a list of drivers present in the vicinity of the rider.
+        - CFS will then return the same to CRS.
+
+    - Driver Priority Engine: It is a consumer that listens to kafka to make rating and xyz things.
+        - This will get a list of drivers from CRS and return a driver based on some filter conditions like high rating driver, premium customer etc
+        - This will finally return a single driver to CRS.
+
+    - Web Socket Manager:
+        - This will contains a mapping of which driver is connected to which WS handler
+        - This also stores mapping of all drivers mapped to each handler
+        - Handler -> list of driver & driver -> Handler mappings
+
+    - Trip Service:
+        - This will be called from CRS when a driver is selected for the trip.
+        - Entry of trips will be created in mysql and return to CRS
+    - Trip Archiver Service:
+        - This is a scheduled job that runs once a day to move the terminal state trips to cassandra
+
+    - Kafka:
+        - It is used for payment service events
+        - Metrics: check diagram
+
+- Flow: Check the self diagram numbering to understand the flow
+    -

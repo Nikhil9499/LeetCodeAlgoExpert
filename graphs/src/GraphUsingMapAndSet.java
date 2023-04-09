@@ -55,7 +55,6 @@ public class GraphUsingMapAndSet {
 
     // Searches for a given edge in the graph
     public void searchEdge(int src, int dest) {
-        Iterator set = graph.get(src).iterator();
 
         if (graph.get(src).contains(dest))
             System.out.println("Edge from " + src + " to " +

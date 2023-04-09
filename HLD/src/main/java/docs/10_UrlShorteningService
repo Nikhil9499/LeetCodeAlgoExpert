@@ -17,8 +17,8 @@ Requirements gathering:
                 - custom short url support
                 - geography from where people come from(Ip address)
                     - this will be important in deciding primary data-centers
-                - kinds of devices used (user-agents)
-                - request will have some useful headers like Ip address, user-agents, platform, etc
+                - kinds of devices used (contestant-agents)
+                - request will have some useful headers like Ip address, contestant-agents, platform, etc
 
     - Non-functional requirements:
         - Very low latency
@@ -90,7 +90,7 @@ Design Discussion:
             and may lead to questions about maintaining billion-record MySQL instances.
 
     - Analytics:
-        - Request will have some useful headers like Ip address, user-agents, platform, etc that we can use for analytics
+        - Request will have some useful headers like Ip address, contestant-agents, platform, etc that we can use for analytics
         - We can send each request metadata to kafka but this will increase latency
         - We can do this asynchronously so that latency doesn't take any hit but some events might be lost
         - We can store request metadata in in-memory queue and flush to kafka after either a fixed time interval or

@@ -20,9 +20,10 @@ Microservice Patterns:
     - Contracts, Api-gateway, etc.
 
  - Strangler Pattern:
-    - Way of refactoring the monolith into microservices so that we ca routed only a part of traffic to the new developed MSs.
+    - Way of refactoring the monolith into microservices so that we can route only a part of traffic to the new developed MSs.
     - Just like experimental service in Z
     - Use weighted load balancing in api-gateway layer
+    - Move 10% traffic to new microservice, if any issue comes  make it 0 again.
 
  - Databases:
     - Should we got for separate DB for all services or shared DB across services ?
@@ -49,7 +50,7 @@ Microservice Patterns:
             - Services take care of consuming both success and failure events and act accordingly
             - Cyclic dependency can occur in this type.
         - Orchestration:
-            - In this 1 orchestrator node will be there which is reponsible for sending events to services either for processing or for rollback.
+            - In this 1 orchestrator node will be there which is responsible for sending events to services either for processing or for rollback.
             - No cyclic dependency can occur in this type.
 
  - CQRS Pattern:

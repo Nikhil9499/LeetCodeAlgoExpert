@@ -1,6 +1,6 @@
 package strategyPattern.withPattern;
 
-//Strategy pattern is used when children within inheritance tree same some common methods.
+// Strategy pattern is used when children within inheritance tree same some common methods.
 // Here sporty implementation is the common one
 
 public class Driver {

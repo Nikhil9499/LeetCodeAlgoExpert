@@ -1,10 +1,10 @@
 - Build a car rental system like zoomCar
 
 - Flow:
-    - A user comes on the application and enter the location from where the user needs to book the car.
-    - Based on location selected, application will show list of stores from where the user can select a car.
-    - After selecting the store, the user will see the list of cars available for rent.
-    - The user will select a car and proceed ahead with booking.
-    - During booking, the user needs to mention the journey details like time duration, startTime, type of booking(hourly/daily/etc).
-    - After everything is done, a bill will be generated that the user can pay before/after the journey completes.
+    - A contestant comes on the application and enter the location from where the contestant needs to book the car.
+    - Based on location selected, application will show list of stores from where the contestant can select a car.
+    - After selecting the store, the contestant will see the list of cars available for rent.
+    - The contestant will select a car and proceed ahead with booking.
+    - During booking, the contestant needs to mention the journey details like time duration, startTime, type of booking(hourly/daily/etc).
+    - After everything is done, a bill will be generated that the contestant can pay before/after the journey completes.
 

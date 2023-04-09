@@ -6,13 +6,13 @@ public class Node {
 	public int data, val;
 	public Node left, right;
 
-	Node(int data) {
+	public Node(int data) {
 		this.data = data;
 		this.val = data;
 		left = right = null;
 	}
 
-	Node(int data, binaryTree.Node left, binaryTree.Node right) {
+	public Node(int data, binaryTree.Node left, binaryTree.Node right) {
 		this.data = data;
 		this.val = data;
 		this.left = left;
@@ -21,11 +21,6 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Node{" +
-				"data=" + data +
-				", val=" + val +
-				", left=" + left +
-				", right=" + right +
-				'}';
+		return data + "";
 	}
 }

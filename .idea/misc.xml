@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/designPatterns/pom.xml" />
         <option value="$PROJECT_DIR$/HLD/pom.xml" />
         <option value="$PROJECT_DIR$/DSA/pom.xml" />
+        <option value="$PROJECT_DIR$/aws/pom.xml" />
+        <option value="$PROJECT_DIR$/recursion/pom.xml" />
       </list>
     </option>
   </component>

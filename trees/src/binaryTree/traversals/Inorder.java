@@ -1,10 +1,12 @@
 package binaryTree.traversals;
 
 import binaryTree.Node;
+import binaryTree.Tree;
 
 public class Inorder {
     public static void main(String[] args) {
-
+        Node root = Tree.getRoot();
+        inorder(root);
     }
 
     public static void inorder(Node root) {

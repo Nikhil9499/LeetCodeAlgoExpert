@@ -3,9 +3,18 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        String key = "61971cc96b0c0162fa921bad->21-22->CBSE->Homework->Homework-CBSE-VI-Mathematics-111-02-11-2022-307417->VI->Mathematics->111";
+        String key = "61971cc96b0c0162fa921bad->21-22->CBSE->MonthlyTest->MonthlyTest-CBSE-IX-Mathematics-3524-17-01-2023-309712->IX->Mathematics->3524";
         System.out.println(key.replaceAll("->", "/"));
         System.out.println(Paths.get("test", "1", "2"));
+
+//        System.out.println(Long.valueOf(null));
+        List<UserInfo> allStudentSheetInfoWrtSlugAndQuiz = List.of(new UserInfo(1, "1"));
+        List<UserInfo> ndUserInfos = allStudentSheetInfoWrtSlugAndQuiz.stream().filter(userInfo -> userInfo.getRollNo() == -1).toList();
+        System.out.println(ndUserInfos);
+        for(UserInfo u: ndUserInfos) {
+            System.out.println("hello");
+        }
+
 
         List<UserInfo> dbStudents = new ArrayList<>();
         UserInfo u1 = new UserInfo(1, "1");
@@ -15,13 +24,13 @@ public class Test {
         dbStudents.add(u2);
         dbStudents.add(u3);
 
-        System.out.println(dbStudents);
+//        System.out.println(dbStudents);
 
         List<UserInfo> feStudents = new ArrayList<>();
         feStudents.add(u2);
         feStudents.add(u3);
 
-        System.out.println(feStudents);
+//        System.out.println(feStudents);
 
         List<UserInfo> toBeDeleted = new ArrayList<>();
         List<UserInfo> finalToBeDeleted = toBeDeleted;
@@ -35,17 +44,31 @@ public class Test {
 //                toBeDeleted.add(dbStudent);
 //            }
 //        }
-        System.out.println(toBeDeleted);
+//        System.out.println(toBeDeleted);
 
         toBeDeleted = new ArrayList<>(dbStudents);
         toBeDeleted.removeAll(feStudents);
-        System.out.println(toBeDeleted);
+//        System.out.println(toBeDeleted);
         List<Integer> integers = Arrays.asList(1, 2, 3);
     }
 
     public static class UserInfo {
         int id;
         String name;
+
+        int rollNo;
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getRollNo() {
+            return rollNo;
+        }
 
         public UserInfo(int id, String name) {
             this.id = id;
@@ -102,4 +125,7 @@ public class Test {
         return new ArrayList<List<Integer>>(set);
 
     }
+
+
+
 }

@@ -73,4 +73,43 @@ public class Tree {
 
 		return tree.root;
 	}
+
+	public static Node getIdenticalTreeRoot() {
+		/* Create following Binary Tree
+         1
+        / \
+       2   2
+        */
+		Tree tree = new Tree();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(2);
+
+		return tree.root;
+	}
+
+	public static Node getSumTreeRoot() {
+		/* Create following Binary Tree
+			 		40
+				/   	 \
+			  8     	  12
+			/   \  		 /   \
+		   5     3 		4     8
+		*/
+		Node root = new Node(40);
+		root.left = new Node(8);
+		root.right = new Node(12);
+		root.left.left = new Node(5);
+		root.left.right = new Node(3);
+		root.right.left = new Node(4);
+		root.right.right = new Node(8);
+		Tree tree = new Tree();
+		tree.root = root;
+
+		return tree.root;
+	}
+
+	public static boolean isLeaf(Node node) {
+		return node.left == null && node.right == null;
+	}
 }

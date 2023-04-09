@@ -10,6 +10,8 @@
         <module name="HLD" />
         <module name="designPatterns" />
         <module name="DSA" />
+        <module name="aws" />
+        <module name="recursion" />
       </profile>
     </annotationProcessing>
   </component>

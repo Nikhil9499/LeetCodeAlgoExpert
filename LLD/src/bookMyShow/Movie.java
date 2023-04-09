@@ -13,4 +13,5 @@ public class Movie {
     private String movieName;
     private Genre genre;
     private List<String> actors;
+    private int durationInMins;
 }

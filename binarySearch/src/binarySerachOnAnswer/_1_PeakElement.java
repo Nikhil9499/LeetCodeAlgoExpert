@@ -28,12 +28,15 @@ public class _1_PeakElement {
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,5,6};
         System.out.println(findPeakElement(nums));
+        System.out.println(findPeakElementRecursive(nums));
 
         nums= new int[] {5,4,3,2,1};
         System.out.println(findPeakElement(nums));
+        System.out.println(findPeakElementRecursive(nums));
 
         nums= new int[] {3,4,3,2,1};
         System.out.println(findPeakElement(nums));
+        System.out.println(findPeakElementRecursive(nums));
     }
 
     public static int findPeakElement(int[] nums) {
@@ -64,5 +67,43 @@ public class _1_PeakElement {
         }
 
         return -1;
+    }
+
+    public static int findPeakElementRecursive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        int n = nums.length;
+        if (n==1) {
+            return 0;
+        }
+
+        if (nums[0] > nums[1]) {
+            return 0;
+        }
+
+        if (nums[n-1] > nums[n-2]) {
+            return n-1;
+        }
+
+        return binSearchOnAns(nums, 0, n-1);
+    }
+
+    public static int binSearchOnAns(int[]nums, int low, int high) {
+        if (low > high) {
+            return -1;
+        }
+
+        int mid = low + (high-low)/2;
+        if ((mid == 0 || nums[mid] > nums[mid-1]) && (mid == nums.length -1 || nums[mid] > nums[mid+1])) {
+            return mid;
+        } else if (nums[mid] < nums[mid+1]) {
+            return binSearchOnAns(nums, mid+1, high);
+        } else {
+            return binSearchOnAns(nums, low, mid-1);
+        }
+
+
     }
 }

@@ -2,7 +2,7 @@ package singleton;
 
 public class SingletonApproach4 {
     /* Volatile keyword:
-    1. The Java volatile keyword cannot be used with method or class and it can only be used with a variable.
+    1. The Java volatile keyword cannot be used with method or class, it can only be used with a variable.
     2. Java volatile keyword also guarantees visibility and ordering, after Java 5 writes to any volatile
         variable happens before any read into the volatile variable.
     3. Volatile keyword in Java is used as an indicator to Java compiler and Thread that do not cache the

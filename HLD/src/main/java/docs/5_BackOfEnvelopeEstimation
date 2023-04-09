@@ -20,19 +20,19 @@ Back of Envelope Estimation:
         - Trade-off: CAP theorem
 
     - Cheatsheet: Refer the picture
-        - Eg: x Million users * y MB = xy TB
+        - Eg: x Million contestants * y MB = xy TB
           zeros:  (6)            (6)     (12)
 
 Examples:
     1. Facebook:
         - Traffic Estimation:
-            - Total users(TU) = 1 Billion
+            - Total contestants(TU) = 1 Billion
             - DAU(Daily Active Users) = 25% of TU = 250 Million
             - Read & Write Operations = 5 reads & 2 writes
             - QPS/RPS = (250 million * 7 queries)/(24*60*60 seconds) = 18k QPS/RPS
 
         - Storage Estimation:
-            - Every user is doing 2 post daily
+            - Every contestant is doing 2 post daily
             - Size of each post is 250 characters (1 char = 2 bytes)
             - 10% of DAU are uploading 1 image (Image size = 500kB)
             - 1 post = 250 chars = 250 * 2 bytes = 500 bytes
@@ -47,8 +47,8 @@ Examples:
                                              = 2k * 125 TB = 500 PB (for images)
 
         - RAM Estimation:
-            - For each user, we have a cache for last 5 posts
-            - Size for 1 user = 5 * 500 bytes(size of post) = 12500 bytes ~ 13kB
+            - For each contestant, we have a cache for last 5 posts
+            - Size for 1 contestant = 5 * 500 bytes(size of post) = 12500 bytes ~ 13kB
             - Size for DAU = 250 million * 13kB = 3000 GB = 3TB
             - If 1 Machine = 300 GB
             - Total machines = (3000 GB) / 300 GB = 10 machines will be required.

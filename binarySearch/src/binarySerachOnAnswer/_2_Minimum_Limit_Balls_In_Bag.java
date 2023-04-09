@@ -34,12 +34,12 @@ public class _2_Minimum_Limit_Balls_In_Bag {
 
     public static void main(String[] args) {
         int[]arr= {9};
-//        System.out.println(minimumSize(arr, 2));
-//        System.out.println(minimumSize2(arr, 2));
-//        System.out.println(minimumSize3(arr, 2));
+        System.out.println(minimumSize(arr, 2));
+        System.out.println(minimumSize2(arr, 2));
+        System.out.println(minimumSize3(arr, 2));
         arr = new int[]{2,4,8,2};
-//        System.out.println(minimumSize(arr, 4));
-//        System.out.println(minimumSize2(arr, 4));
+        System.out.println(minimumSize(arr, 4));
+        System.out.println(minimumSize2(arr, 4));
         System.out.println(minimumSize3(arr, 4));
         arr = new int[]{7,17};
 //        System.out.println(minimumSize(arr, 2));
@@ -53,13 +53,13 @@ public class _2_Minimum_Limit_Balls_In_Bag {
     public static int minimumSize3(int[] nums, int maxOperations) {
         int low = 1, high = Integer.MIN_VALUE, mid;
 
-        for (int i=0; i<nums.length; i++) {
-            high = Math.max(high, nums[i]);
+        for (int num : nums) {
+            high = Math.max(high, num);
         }
         int ans = -1;
         while(low <= high) {
             mid = low + (high-low)/2;
-            System.out.print(mid+":"+ans);
+//            System.out.print(mid+":"+ans);
             if (numOfOperations2(mid, nums, maxOperations)) {
                 ans = mid;
                 high = mid-1;
@@ -71,11 +71,11 @@ public class _2_Minimum_Limit_Balls_In_Bag {
     }
     public static boolean numOfOperations2(int penalty, int[] nums, int maxOperations){
         int ops = 0;
-        for (int i=0; i<nums.length; i++) {
-            ops += nums[i]/penalty;
-            if (nums[i]%penalty == 0) ops--;
+        for (int num : nums) {
+            ops += num / penalty;
+            if (num % penalty == 0) ops--;
         }
-        System.out.println(":"+ops);
+//        System.out.println(":"+ops);
         return ops <= maxOperations;
     }
 

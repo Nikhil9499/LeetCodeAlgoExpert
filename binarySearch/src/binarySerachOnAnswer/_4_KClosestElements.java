@@ -74,7 +74,7 @@ public class _4_KClosestElements {
         List<Integer> result = new ArrayList<>();
         for(int i = low; i< low+k; i++)
             result.add(arr[i]);
-        int mod=1000000007;
+//        int mod=1000000007;
         return result;
     }
 

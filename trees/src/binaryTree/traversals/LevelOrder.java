@@ -18,6 +18,10 @@ public class LevelOrder {
 		levelOrder(Tree.getRoot2());
 		System.out.println();
 		levelOrder2(Tree.getRoot2());
+
+		System.out.println();
+
+		levelOrderPractise(Tree.getRoot2());
 	}
 
 	public static void levelOrder(Node node) {
@@ -73,6 +77,29 @@ public class LevelOrder {
 				if (curr.right != null) {
 					queue.offer(curr.right);
 				}
+			}
+		}
+	}
+
+	// just prints node level wise but can't know nodes of same level, for this use above methods
+	public static void levelOrderPractise(Node root) {
+		if (root == null) {
+			return;
+		}
+
+		Queue<Node> queue = new LinkedList<>();
+		queue.offer(root);
+
+		while(!queue.isEmpty()) {
+			Node poll = queue.poll();
+			System.out.println(poll.data);
+
+			if (poll.left != null) {
+				queue.offer(poll.left);
+			}
+
+			if (poll.right != null) {
+				queue.offer(poll.right);
 			}
 		}
 	}

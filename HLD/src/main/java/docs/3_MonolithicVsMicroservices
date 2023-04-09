@@ -1,5 +1,5 @@
 Monolithic/Legacy:
-    - Having all features in a single application like authentication, authorisation, payments, (user, order, inventory) managements, etc.
+    - Having all features in a single application like authentication, authorisation, payments, (contestant, order, inventory) managements, etc.
 
     - Pros:
         - Easy deployment: One executable file or directory makes deployment easier.
@@ -16,7 +16,7 @@ Monolithic/Legacy:
 
 
 Microservices:
-    - Having different services for different use-cases/components that are independent of each other like user management,
+    - Having different services for different use-cases/components that are independent of each other like contestant management,
         payment management, inventory management, etc.
 
     - Pros: All disadvantages of monolithic are advantages of microservices
